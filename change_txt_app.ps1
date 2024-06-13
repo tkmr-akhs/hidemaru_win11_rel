@@ -3,11 +3,25 @@ $file_icon = "%SystemRoot%\System32\SHELL32.dll,70"
 $exts = @(".txt", ".log")
 $key_name = "txt_hidemaru"
 
-New-Item -Path "HKCU:\SOFTWARE\Classes\$($key_name)" | Out-Null
-New-Item -Path "HKCU:\SOFTWARE\Classes\$($key_name)\DefaultIcon" | Out-Null
-New-Item -Path "HKCU:\SOFTWARE\Classes\$($key_name)\shell" | Out-Null
-New-Item -Path "HKCU:\SOFTWARE\Classes\$($key_name)\shell\open" | Out-Null
-New-Item -Path "HKCU:\SOFTWARE\Classes\$($key_name)\shell\open\command" | Out-Null
+$reg_key = "HKCU:\SOFTWARE\Classes\$($key_name)"
+try { New-Item -Path $reg_key -ErrorAction Stop | Out-Null }
+catch { Write-Debug "The registory '$reg_key' key has already exist." }
+
+$reg_key = "HKCU:\SOFTWARE\Classes\$($key_name)\DefaultIcon"
+try { New-Item -Path $reg_key -ErrorAction Stop | Out-Null }
+catch { Write-Debug "The registory '$reg_key' key has already exist." }
+
+$reg_key = "HKCU:\SOFTWARE\Classes\$($key_name)\shell"
+try { New-Item -Path $reg_key -ErrorAction Stop | Out-Null }
+catch { Write-Debug "The registory key '$reg_key' has already exist." }
+
+$reg_key = "HKCU:\SOFTWARE\Classes\$($key_name)\shell\open"
+try { New-Item -Path $reg_key -ErrorAction Stop | Out-Null }
+catch { Write-Debug "The registory key '$reg_key' has already exist." }
+
+$reg_key = "HKCU:\SOFTWARE\Classes\$($key_name)\shell\open\command"
+try { New-Item -Path $reg_key -ErrorAction Stop | Out-Null }
+catch { Write-Debug "The registory key '$reg_key' has already exist." }
 
 Set-ItemProperty HKCU:\SOFTWARE\Classes\txt_hidemaru\DefaultIcon -Name "(default)" -Value $file_icon
 Set-ItemProperty HKCU:\SOFTWARE\Classes\txt_hidemaru\shell\open\command -Name "(default)" -Value $editor
