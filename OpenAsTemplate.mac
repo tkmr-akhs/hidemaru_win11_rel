@@ -1,0 +1,13 @@
+$title = gettitle(0);
+$basename = basename2;
+
+setstaticvariable "totaltext", gettotaltext(), -1;
+
+closenew;
+
+insert getstaticvariable("totaltext", -1);
+
+title $title, 0;
+title $basename, 3;
+title -1, 0;
+title -1, 3;

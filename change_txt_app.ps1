@@ -1,6 +1,7 @@
-﻿$editor_rw = '"D:\Program Files\Hidemaru\Hidemaru.exe" "%1"'
-$editor_ro = '"D:\Program Files\Hidemaru\Hidemaru.exe" /r "%1"'
-$file_icon = "%SystemRoot%\System32\SHELL32.dll,70"
+﻿$ro_macro = '"%USERPROFILE%\Documents\Hidemaruo\Hidemaru\Macro\OpenAsTemplate.mac"'
+$editor_rw = "`"D:\Program Files\Hidemaru\Hidemaru.exe`" `"%1`""
+$editor_ro = "`"D:\Program Files\Hidemaru\Hidemaru.exe`" /x$($ro_macro) `"%1`""
+$file_icon = '%SystemRoot%\System32\SHELL32.dll,70'
 $exts = @(".txt", ".log")
 $key_name = "txt_hidemaru"
 $opennew_title = "新規(&N)"
