@@ -1,11 +1,14 @@
 $title = gettitle(0);
 $basename = basename2;
+$configset = currentconfigset;
 
 setstaticvariable "totaltext", gettotaltext(), -1;
 
 closenew;
 
 insert getstaticvariable("totaltext", -1);
+
+configset $configset;
 
 title $title, 0;
 title $basename, 3;
